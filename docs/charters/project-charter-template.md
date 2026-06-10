@@ -1,5 +1,7 @@
 # Project Charter Template
 
+*A project is a discrete body of work to build, extend, or improve a product. This charter defines the project's scope, objectives, resources, and success criteria. The project ends when the charter objectives are met or the project is cancelled.*
+
 *Completed by: CSO, PLM, COO*
 *Reviewed by: CFO, GC*
 *Approved by: CSO, COO, CFO (+ CEO if cash required)*

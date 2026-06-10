@@ -104,6 +104,38 @@ abe/                          ← Generic ABE framework (this repo)
 
 ---
 
+## What Is a Project?
+
+A **project** is a discrete body of work to build, extend, or improve a product. It has:
+
+- A **charter** — defines scope, objectives, resources, and success criteria
+- A **sprint cadence** — work is planned and executed in sprints
+- A **defined end** — a project closes when its charter objectives are met, or when it is cancelled
+- **Ownership** — Engineering executes, PLM monitors, CSO provides strategic oversight
+
+Projects are the primary unit of execution in an ABE. Product lines are made up of successive projects that evolve the product over time.
+
+### Project Lifecycle
+
+```
+Planning → Charter Approval → Sprint Zero → Sprint Execution → Sprint Review → Release → Close
+```
+
+See `workflows/agent-workflows.md` for the full lifecycle.
+
+### Project vs. Product Line
+
+| | Product Line | Project |
+|---|---|---|
+| **Scope** | Entire product (ongoing) | Discrete body of work (bounded) |
+| **Duration** | Indefinite | Finite (charter to close) |
+| **Owner** | PLM | Engineering (execution), PLM (monitoring) |
+| **Output** | Evolving product | Shipped increment |
+
+A product line may have multiple concurrent projects (e.g., one per major feature area) or a single sequential project pipeline.
+
+---
+
 ## Adopting the ABE Framework
 
 To create a new ABE instance:

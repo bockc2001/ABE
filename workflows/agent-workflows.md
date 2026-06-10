@@ -25,6 +25,10 @@
 
 ## Project Lifecycle
 
+A **project** is a discrete body of work to build, extend, or improve a product. It is bounded by a charter (start) and a close (end), executed in sprints, and owned by Engineering with PLM monitoring. A product line is made up of successive projects.
+
+---
+
 ### Phase 1: Project Planning Session
 **Who triggers:** CSO or PLM
 
