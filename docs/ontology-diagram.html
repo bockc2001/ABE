@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ABE Ontology</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafafa; padding: 24px; }
+  h1 { font-size: 20px; color: #1a1a1a; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #666; margin-bottom: 24px; }
+  svg { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; }
+  .legend { font-size: 12px; color: #555; margin-top: 12px; }
+  .legend span { margin-right: 16px; }
+  .legend .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<h1>ABE Ontology</h1>
+<div class="subtitle">Entity types, relationships, and constraints of the Automated Business Entity</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#888"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4a90d9"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#5a9a5a"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d98a3a"/>
+    </marker>
+  </defs>
+
+  <!-- ===== LAYER 1: Organization & Humans ===== -->
+  <!-- Organization -->
+  <rect x="420" y="16" width="260" height="52" rx="8" fill="#e8f0fe" stroke="#4a90d9" stroke-width="2"/>
+  <text x="550" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">Organization</text>
+  <text x="550" y="52" text-anchor="middle" font-size="10" fill="#555">(ABE Instance)</text>
+
+  <!-- Human -->
+  <rect x="830" y="16" width="220" height="52" rx="8" fill="#fef9e7" stroke="#d9a83a" stroke-width="2"/>
+  <text x="940" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">Human</text>
+  <text x="940" y="52" text-anchor="middle" font-size="10" fill="#555">(CEO, Leaders)</text>
+
+  <!-- Organization -> Human (led_by) -->
+  <line x1="680" y1="42" x2="820" y2="42" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="750" y="34" text-anchor="middle" font-size="9" fill="#888">led_by</text>
+
+  <!-- ===== LAYER 2: Agents ===== -->
+  <!-- Agent (abstract) -->
+  <rect x="380" y="110" width="160" height="52" rx="8" fill="#f0ebfd" stroke="#7c5cbf" stroke-width="2"/>
+  <text x="460" y="130" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">Agent</text>
+  <text x="460" y="146" text-anchor="middle" font-size="10" fill="#555">(AI Role)</text>
+
+  <!-- Organization -> Agent (has_agents) -->
+  <line x1="550" y1="68" x2="490" y2="110" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="495" y="88" text-anchor="middle" font-size="9" fill="#888">has_agents</text>
+
+  <!-- Human -> Agent (counterpart_of) -->
+  <line x1="830" y1="52" x2="540" y2="120" stroke="#d9a83a" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow-orange)"/>
+  <text x="660" y="78" text-anchor="middle" font-size="9" fill="#d98a3a">counterpart_of</text>
+
+  <!-- ExecutiveAssistant -->
+  <rect x="830" y="110" width="220" height="52" rx="8" fill="#fef9e7" stroke="#d9a83a" stroke-width="2"/>
+  <text x="940" y="130" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">ExecutiveAssistant</text>
+  <text x="940" y="146" text-anchor="middle" font-size="10" fill="#555">(Outside reporting tree)</text>
+
+  <!-- Human -> EA (served_by) -->
+  <line x1="940" y1="68" x2="940" y2="104" stroke="#d9a83a" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+  <text x="956" y="88" font-size="9" fill="#d98a3a">served_by</text>
+
+  <!-- ===== LAYER 3: Agent Hierarchy ===== -->
+  <!-- CoS -->
+  <rect x="200" y="210" width="140" height="44" rx="6" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="270" y="228" text-anchor="middle" font-size="12" font-weight="600" fill="#1a1a1a">CoS</text>
+  <text x="270" y="242" text-anchor="middle" font-size="9" fill="#555">Craig</text>
+
+  <!-- C-Suite -->
+  <rect x="360" y="210" width="80" height="44" rx="6" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="400" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">CFO</text>
+  <text x="400" y="242" text-anchor="middle" font-size="9" fill="#555">Fred</text>
+
+  <rect x="455" y="210" width="80" height="44" rx="6" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="495" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">CRO</text>
+  <text x="495" y="242" text-anchor="middle" font-size="9" fill="#555">Rick</text>
+
+  <rect x="550" y="210" width="80" height="44" rx="6" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="590" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">CMO</text>
+  <text x="590" y="242" text-anchor="middle" font-size="9" fill="#555">Mike</text>
+
+  <rect x="645" y="210" width="80" height="44" rx="6" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="685" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">CSO</text>
+  <text x="685" y="242" text-anchor="middle" font-size="9" fill="#555">Sam</text>
+
+  <rect x="740" y="210" width="80" height="44" rx="6" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="780" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">GC</text>
+  <text x="780" y="242" text-anchor="middle" font-size="9" fill="#555">Greg</text>
+
+  <rect x="835" y="210" width="80" height="44" rx="6" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="875" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">CXO</text>
+  <text x="875" y="242" text-anchor="middle" font-size="9" fill="#555">Xavier</text>
+
+  <!-- COO -->
+  <rect x="200" y="300" width="140" height="44" rx="6" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="270" y="318" text-anchor="middle" font-size="12" font-weight="600" fill="#1a1a1a">COO</text>
+  <text x="270" y="332" text-anchor="middle" font-size="9" fill="#555">Owen</text>
+
+  <!-- CoS -> C-Suite reporting lines -->
+  <line x1="340" y1="232" x2="356" y2="232" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <line x1="340" y1="232" x2="451" y2="232" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <line x1="340" y1="232" x2="546" y2="232" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <line x1="340" y1="232" x2="641" y2="232" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <line x1="340" y1="232" x2="736" y2="232" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <line x1="340" y1="232" x2="831" y2="232" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+  <!-- CoS -> COO -->
+  <line x1="270" y1="254" x2="270" y2="296" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+  <!-- Ops sub-agents -->
+  <rect x="80" y="390" width="100" height="40" rx="6" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="130" y="408" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">Engineering</text>
+  <text x="130" y="422" text-anchor="middle" font-size="9" fill="#555">Ethan</text>
+
+  <rect x="200" y="390" width="100" height="40" rx="6" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="250" y="408" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">Production</text>
+  <text x="250" y="422" text-anchor="middle" font-size="9" fill="#555">Peter</text>
+
+  <rect x="320" y="390" width="100" height="40" rx="6" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="370" y="408" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">Logistics</text>
+  <text x="370" y="422" text-anchor="middle" font-size="9" fill="#555">Larry</text>
+
+  <!-- COO -> Ops -->
+  <line x1="230" y1="344" x2="140" y2="386" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <line x1="270" y1="344" x2="250" y2="386" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <line x1="310" y1="344" x2="360" y2="386" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+  <!-- PLM -->
+  <rect x="645" y="300" width="120" height="44" rx="6" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="705" y="318" text-anchor="middle" font-size="12" font-weight="600" fill="#1a1a1a">PLM</text>
+  <text x="705" y="332" text-anchor="middle" font-size="9" fill="#555">Miles (LifeBlood)</text>
+
+  <!-- CSO -> PLM -->
+  <line x1="705" y1="254" x2="705" y2="296" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+  <!-- ===== LAYER 4: Product Entities ===== -->
+  <!-- ProductLine -->
+  <rect x="420" y="480" width="200" height="52" rx="8" fill="#e6f4ea" stroke="#5a9a5a" stroke-width="2"/>
+  <text x="520" y="500" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">ProductLine</text>
+  <text x="520" y="516" text-anchor="middle" font-size="10" fill="#555">(e.g., LifeBlood)</text>
+
+  <!-- Organization -> ProductLine -->
+  <line x1="550" y1="68" x2="520" y2="476" stroke="#5a9a5a" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <text x="490" y="280" font-size="9" fill="#5a9a5a">has_product_lines</text>
+
+  <!-- PLM -> ProductLine -->
+  <line x1="680" y1="344" x2="580" y2="476" stroke="#5a9a5a" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <text x="600" y="420" font-size="9" fill="#5a9a5a">manages</text>
+
+  <!-- Roadmap -->
+  <rect x="680" y="480" width="160" height="44" rx="6" fill="#e6f4ea" stroke="#5a9a5a" stroke-width="1.5"/>
+  <text x="760" y="498" text-anchor="middle" font-size="12" font-weight="600" fill="#1a1a1a">Roadmap</text>
+  <text x="760" y="512" text-anchor="middle" font-size="9" fill="#555">3-5 sprint horizon</text>
+
+  <!-- ProductLine -> Roadmap -->
+  <line x1="620" y1="506" x2="676" y2="506" stroke="#5a9a5a" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+
+  <!-- ===== LAYER 5: Project Entities ===== -->
+  <!-- Project -->
+  <rect x="100" y="580" width="180" height="52" rx="8" fill="#fff3e0" stroke="#d98a3a" stroke-width="2"/>
+  <text x="190" y="600" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">Project</text>
+  <text x="190" y="616" text-anchor="middle" font-size="10" fill="#555">(Bounded body of work)</text>
+
+  <!-- ProductLine -> Project -->
+  <line x1="460" y1="532" x2="260" y2="576" stroke="#d98a3a" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+  <text x="330" y="562" font-size="9" fill="#d98a3a">has_projects</text>
+
+  <!-- Sprint -->
+  <rect x="320" y="580" width="140" height="44" rx="6" fill="#fff3e0" stroke="#d98a3a" stroke-width="1.5"/>
+  <text x="390" y="598" text-anchor="middle" font-size="12" font-weight="600" fill="#1a1a1a">Sprint</text>
+  <text x="390" y="612" text-anchor="middle" font-size="9" fill="#555">Time-boxed iteration</text>
+
+  <!-- Project -> Sprint -->
+  <line x1="280" y1="606" x2="316" y2="606" stroke="#d98a3a" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+
+  <!-- Story -->
+  <rect x="500" y="580" width="140" height="44" rx="6" fill="#fff3e0" stroke="#d98a3a" stroke-width="1.5"/>
+  <text x="570" y="598" text-anchor="middle" font-size="12" font-weight="600" fill="#1a1a1a">Story</text>
+  <text x="570" y="612" text-anchor="middle" font-size="9" fill="#555">Unit of work (S/M/L)</text>
+
+  <!-- Sprint -> Story -->
+  <line x1="460" y1="602" x2="496" y2="602" stroke="#d98a3a" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+
+  <!-- Epic -->
+  <rect x="680" y="580" width="140" height="44" rx="6" fill="#e6f4ea" stroke="#5a9a5a" stroke-width="1.5"/>
+  <text x="750" y="598" text-anchor="middle" font-size="12" font-weight="600" fill="#1a1a1a">Epic</text>
+  <text x="750" y="612" text-anchor="middle" font-size="9" fill="#555">Multi-sprint body of work</text>
+
+  <!-- Roadmap -> Epic -->
+  <line x1="760" y1="524" x2="750" y2="576" stroke="#5a9a5a" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+
+  <!-- Epic -> Story -->
+  <line x1="680" y1="602" x2="644" y2="602" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ===== LAYER 6: Execution Entities ===== -->
+  <!-- Pod -->
+  <rect x="100" y="670" width="120" height="40" rx="6" fill="#fff3e0" stroke="#d98a3a" stroke-width="1.5"/>
+  <text x="160" y="688" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">Pod</text>
+  <text x="160" y="702" text-anchor="middle" font-size="9" fill="#555">Sub-agent team</text>
+
+  <!-- Sprint -> Pod -->
+  <line x1="350" y1="624" x2="200" y2="666" stroke="#d98a3a" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+
+  <!-- SubAgent -->
+  <rect x="260" y="670" width="140" height="40" rx="6" fill="#fff3e0" stroke="#d98a3a" stroke-width="1.5"/>
+  <text x="330" y="688" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">SubAgent</text>
+  <text x="330" y="702" text-anchor="middle" font-size="9" fill="#555">Ephemeral worker</text>
+
+  <!-- Pod -> SubAgent -->
+  <line x1="220" y1="690" x2="256" y2="690" stroke="#d98a3a" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+
+  <!-- Engineering -> SubAgent -->
+  <line x1="130" y1="430" x2="300" y2="666" stroke="#4a90d9" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow-blue)"/>
+  <text x="180" y="560" font-size="9" fill="#4a90d9">spawns</text>
+
+  <!-- ===== LAYER 7: Document ===== -->
+  <!-- Document -->
+  <rect x="880" y="580" width="160" height="44" rx="6" fill="#f5f5f5" stroke="#999" stroke-width="1.5"/>
+  <text x="960" y="598" text-anchor="middle" font-size="12" font-weight="600" fill="#1a1a1a">Document</text>
+  <text x="960" y="612" text-anchor="middle" font-size="9" fill="#555">Artifact (owned by 1 agent)</text>
+
+  <!-- Agent -> Document -->
+  <line x1="875" y1="232" x2="920" y2="576" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <text x="870" y="420" font-size="9" fill="#888">owns</text>
+
+  <!-- ===== LEGEND ===== -->
+  <rect x="16" y="16" width="12" height="12" rx="2" fill="#e8f0fe" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="34" y="26" font-size="10" fill="#555">Agent / Role</text>
+
+  <rect x="16" y="34" width="12" height="12" rx="2" fill="#fef9e7" stroke="#d9a83a" stroke-width="1.5"/>
+  <text x="34" y="44" font-size="10" fill="#555">Human / EA</text>
+
+  <rect x="16" y="52" width="12" height="12" rx="2" fill="#e6f4ea" stroke="#5a9a5a" stroke-width="1.5"/>
+  <text x="34" y="62" font-size="10" fill="#555">Product / Roadmap / Epic</text>
+
+  <rect x="16" y="70" width="12" height="12" rx="2" fill="#fff3e0" stroke="#d98a3a" stroke-width="1.5"/>
+  <text x="34" y="80" font-size="10" fill="#555">Project / Sprint / Story / Pod / SubAgent</text>
+
+  <rect x="16" y="88" width="12" height="12" rx="2" fill="#f5f5f5" stroke="#999" stroke-width="1.5"/>
+  <text x="34" y="98" font-size="10" fill="#555">Document</text>
+
+  <line x1="16" y1="116" x2="40" y2="116" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <text x="46" y="120" font-size="10" fill="#555">reports_to / manages</text>
+
+  <line x1="16" y1="132" x2="40" y2="132" stroke="#5a9a5a" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <text x="46" y="136" font-size="10" fill="#555">product line ownership</text>
+
+  <line x1="16" y1="148" x2="40" y2="148" stroke="#d98a3a" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+  <text x="46" y="152" font-size="10" fill="#555">project composition</text>
+
+  <line x1="16" y1="164" x2="40" y2="164" stroke="#888" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <text x="46" y="168" font-size="10" fill="#555">cross-cutting (counterpart, spawns, owns)</text>
+</svg>
+
+<div class="legend">
+  <span><span class="swatch" style="background:#e8f0fe;border:1.5px solid #4a90d9"></span>Agent/Role</span>
+  <span><span class="swatch" style="background:#fef9e7;border:1.5px solid #d9a83a"></span>Human/EA</span>
+  <span><span class="swatch" style="background:#e6f4ea;border:1.5px solid #5a9a5a"></span>Product/Roadmap/Epic</span>
+  <span><span class="swatch" style="background:#fff3e0;border:1.5px solid #d98a3a"></span>Project/Sprint/Story/Pod</span>
+  <span><span class="swatch" style="background:#f5f5f5;border:1.5px solid #999"></span>Document</span>
+</div>
+</body>
+</html>
