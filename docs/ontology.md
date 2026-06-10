@@ -64,7 +64,8 @@ Entity (abstract)
     ├── Config
     │   ├── PLMInstances
     │   ├── HumanCounterpartBindings
-    │   └── BranchBacklog
+    │   ├── BranchBacklog
+    │   └── ReportingStructure
     └── FrameworkArtifact
         ├── ABEReadme
         ├── InstanceReadme
@@ -216,7 +217,7 @@ Multi-sprint body of work.
 
 ### 9. Project
 
-A discrete body of work bounded by a charter (start) and close (end).
+A discrete body of work bounded by a charter (start) and close (end). A project's **scope** is a subset of the product roadmap — a selection of epics (and their stories) that the project will deliver.
 
 | Attribute | Type | Description |
 |---|---|---|
@@ -234,8 +235,13 @@ A discrete body of work bounded by a charter (start) and close (end).
 - `budget_allocated_by` → CRO (1)
 - `has_charter` → Charter (1)
 - `has_lessons` → LessonsLearned (0..1)
+- `scope` → Epic (*) — the epics from the roadmap that define this project's scope
+- `scope` → Story (*) — stories within those epics (transitive via Epic, or direct for cross-epic stories)
+- `slice_of` → Roadmap (1) — the roadmap from which scope was selected
 
 **Lifecycle:** `planning → active → review → closing → closed`
+
+**Scope Selection:** During project planning (Phase 1), the PLM and CSO select a subset of roadmap epics to form the project's scope. The charter references these epics. As the roadmap evolves, the project scope is fixed at charter approval — roadmap changes do not retroactively alter an approved project scope (scope changes require charter amendment).
 
 ---
 
@@ -578,6 +584,14 @@ All artifacts are entities created and owned by agents. Each artifact type has a
 - **Contents:** Prioritized backlog of stories not yet assigned to sprints
 - **Updated by:** PLM (continuous)
 
+#### 14.38 ReportingStructure
+- **Owner:** CoS
+- **Location:** `<instance>/docs/agent-roster.md` (human-readable) + derived from Agent `reports_to` relationships (machine-readable)
+- **Contents:** The complete agent reporting tree — every agent, their role code, persona name, direct reports, human counterpart (if any), and roll-up chain to the CEO
+- **Updated by:** CoS (when agents are spawned, decommissioned, or reporting lines change)
+- **Formats:** Markdown table + ASCII tree (human-readable); the canonical source of truth is the set of Agent `reports_to` relationships
+- **Pertains to:** Organization
+
 ---
 
 ### Framework Artifacts
@@ -612,7 +626,8 @@ Organization
   ├── employs → Human (*)
   ├── has_agents → Agent (*)
   ├── has_product_lines → ProductLine (*)
-  └── has_projects → Project (*)
+  ├── has_projects → Project (*)
+  └── has_reporting_structure → ReportingStructure (1)
 
 Human
   ├── counterpart_of → Agent (0..1)
@@ -648,7 +663,10 @@ Project
   ├── monitored_by → PLM | CSO (1)
   ├── has_sprints → Sprint (*)
   ├── has_charter → Charter (1)
-  └── has_lessons → LessonsLearned (0..1)
+  ├── has_lessons → LessonsLearned (0..1)
+  ├── scope → Epic (*)              [subset of roadmap]
+  ├── scope → Story (*)             [stories within scoped epics]
+  └── slice_of → Roadmap (1)         [roadmap from which scope was selected]
 
 Sprint
   ├── part_of → Project (1)
@@ -690,58 +708,65 @@ Artifact
 3. Reporting tree is acyclic
 4. Every agent rolls up to the CEO through at most 3 hops
 5. Only CoS and CSO have direct human counterparts
+6. The reporting structure artifact reflects the current state of all Agent `reports_to` relationships
+7. EAs appear in the reporting structure documentation but have no `reports_to` edge
 
 ### EA Invariants (R2)
-6. EAs are outside the reporting tree
-7. Each EA serves exactly one human
-8. EA persona name matches human name initial
+8. EAs are outside the reporting tree
+9. Each EA serves exactly one human
+10. EA persona name matches human name initial
 
 ### Product Invariants (R3)
-9. Each product line has exactly one PLM
-10. Each product line has exactly one roadmap
-11. Roadmap horizon is 3-5 sprints
+11. Each product line has exactly one PLM
+12. Each product line has exactly one roadmap
+13. Roadmap horizon is 3-5 sprints
 
 ### Project Invariants (R4)
-12. Every project belongs to exactly one product line
-13. Every project has exactly one charter
-14. Engineering executes every project
-15. PLM monitors every non-strategic project
-16. CSO monitors every strategic project
-17. Projects follow lifecycle: planning → active → review → closing → closed
+14. Every project belongs to exactly one product line
+15. Every project has exactly one charter
+16. Engineering executes every project
+17. PLM monitors every non-strategic project
+18. CSO monitors every strategic project
+19. Projects follow lifecycle: planning → active → review → closing → closed
+20. Every project's scope is a subset of its product line's roadmap (slice_of exactly 1 Roadmap)
+21. Project scope epics are selected from the roadmap during planning (Phase 1) and fixed at charter approval
+22. Roadmap changes after charter approval do not retroactively alter project scope
+23. Every story in a project's scope belongs to exactly one of the project's scoped epics (or is a cross-epic story directly in the scope)
 
 ### Sprint Invariants (R5)
-18. Sprints belong to exactly one project
-19. Stories belong to at most one sprint
-20. Sprint execution plan is owned by Engineering
-21. Sprint review includes Engineering, PLM, CSO, COO, CoS
+24. Sprints belong to exactly one project
+25. Stories belong to at most one sprint
+26. Sprint execution plan is owned by Engineering
+27. Sprint review includes Engineering, PLM, CSO, COO, CoS
 
 ### Story Invariants (R6)
-22. Every story has a unique story_id
-23. Stories are estimated by Engineering
-24. Stories are validated by PLM against acceptance criteria
-25. Every story must meet the Standard Definition of Done
+28. Every story has a unique story_id
+29. Stories are estimated by Engineering
+30. Stories are validated by PLM against acceptance criteria
+31. Every story must meet the Standard Definition of Done
 
 ### Sub-Agent Invariants (R7)
-26. All sub-agent resource consumption is debited from Engineering's allocation
-27. Sub-agents are spawned only by Engineering
-28. Sub-agent lifecycle: spawned → executing → review → integrated → closed
+32. All sub-agent resource consumption is debited from Engineering's allocation
+33. Sub-agents are spawned only by Engineering
+34. Sub-agent lifecycle: spawned → executing → review → integrated → closed
 
 ### Artifact Invariants (R8)
-29. Every artifact has exactly one owner
-30. Artifacts are only updated by their owner
-31. Sprint artifacts live in the product line repo
-32. Instance config artifacts live in the instance repo
-33. Framework artifacts live in the ABE repo
-34. Charter is approved before project execution begins
-35. Lessons learned is produced at project close
-36. EVM reports are produced for every sprint
-37. CSO review is produced for every sprint plan
-38. COO readiness is produced before every sprint execution
+35. Every artifact has exactly one owner
+36. Artifacts are only updated by their owner
+37. Sprint artifacts live in the product line repo
+38. Instance config artifacts live in the instance repo
+39. Framework artifacts live in the ABE repo
+40. Charter is approved before project execution begins
+41. Lessons learned is produced at project close
+42. EVM reports are produced for every sprint
+43. CSO review is produced for every sprint plan
+44. COO readiness is produced before every sprint execution
+45. Reporting structure is updated whenever agents are spawned, decommissioned, or reporting lines change
 
 ### Resource Invariants (R9)
-39. Every agent reports resource consumption to CRO
-40. CoS sets hard limits at ≤80% of available
-41. No agent exceeds hard limits without CoS approval
+46. Every agent reports resource consumption to CRO
+47. CoS sets hard limits at ≤80% of available
+48. No agent exceeds hard limits without CoS approval
 
 ---
 
@@ -813,6 +838,7 @@ Artifact
 | Cross-cutting reference | `<instance>/workflows/all_agents/README.md` |
 | Token storage | `<instance>/.plm-tokens/` (git-ignored) |
 | Skills (instance override) | `<instance>/skills/<skill>/SKILL.md` |
+| Reporting structure | `<instance>/docs/agent-roster.md` |
 
 ### Product Line Repo (`<product-repo>/`)
 | Artifact | Pattern |

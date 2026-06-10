@@ -17,7 +17,7 @@
 <h1>ABE Ontology — Full Entity &amp; Artifact Model</h1>
 <div class="subtitle">Entity types, artifact types, relationships, and constraints of the Automated Business Entity</div>
 
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1100" viewBox="0 0 1200 1100">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1140" viewBox="0 0 1200 1140">
   <defs>
     <marker id="arrow" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
       <polygon points="0 0, 10 3.5, 0 7" fill="#888"/>
@@ -228,7 +228,7 @@
   <!-- LAYER 6: ARTIFACTS (y=740) -->
   <!-- ============================================================ -->
   <!-- Artifact abstract -->
-  <rect x="600" y="740" width="200" height="48" rx="8" fill="#f8f0ff" stroke="#7c5cbf" stroke-width="2"/>
+  <rect x="600" y="730" width="200" height="48" rx="8" fill="#f8f0ff" stroke="#7c5cbf" stroke-width="2"/>
   <text x="700" y="760" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">Artifact</text>
   <text x="700" y="776" text-anchor="middle" font-size="10" fill="#555">(owned by exactly 1 agent)</text>
 
@@ -281,7 +281,7 @@
   <text x="504" y="922" font-size="10" font-weight="600" fill="#1a1a1a">Config</text>
 
   <rect x="480" y="938" width="320" height="20" rx="3" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1"/>
-  <text x="488" y="952" font-size="9" fill="#333">PLMInstances · HumanCounterpartBindings · BranchBacklog</text>
+  <text x="488" y="952" font-size="9" fill="#333">PLMInstances · HumanCounterpartBindings · BranchBacklog · ReportingStructure</text>
 
   <!-- Framework artifacts -->
   <rect x="480" y="976" width="16" height="16" rx="2" fill="#efebe9" stroke="#5d4037" stroke-width="1.5"/>
@@ -294,6 +294,14 @@
   <line x1="700" y1="788" x2="700" y2="800" stroke="#7c5cbf" stroke-width="1" stroke-dasharray="2,2"/>
   <line x1="700" y1="800" x2="856" y2="800" stroke="#7c5cbf" stroke-width="1" stroke-dasharray="2,2"/>
   <line x1="856" y1="800" x2="856" y2="778" stroke="#7c5cbf" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- Project -> Roadmap (slice_of) -->
+  <line x1="120" y1="570" x2="640" y2="518" stroke="#7c5cbf" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow-purple)"/>
+  <text x="340" y="540" font-size="9" fill="#7c5cbf">slice_of</text>
+
+  <!-- Project -> Epic (scope) -->
+  <line x1="200" y1="594" x2="820" y2="490" stroke="#7c5cbf" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow-purple)"/>
+  <text x="500" y="528" font-size="9" fill="#7c5cbf">scope</text>
 
   <!-- ============================================================ -->
   <!-- REPO LABELS -->
