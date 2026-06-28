@@ -20,6 +20,41 @@ Each PLM owns one product line repo. The PLM:
 - Delegates tokens to agents that need commit access (Engineering, COO, etc.)
 - New delegations require CSO approval
 
+## Continuous Operation — PLM Is Never Idle
+
+When PLM is not engaged in an active sprint task, it must be performing one of the following three activities. Token usage should be efficient but PLM must remain productive. PLM should never be idle.
+
+### Task 1: Competitive Reconnaissance
+- **Search the web** for competitive products relevant to the product line's market
+- **Feature-map** those products against the product line's current feature set
+- **Identify use cases** that competitors cover but the product line does not
+- **Add uncovered capabilities** as backlog items with: description, competitive source, estimated impact, affected personas
+- **Frequency:** Continuous — when not otherwise engaged, return to this
+
+### Task 2: Customer Intelligence
+- **Search the web** for potential customers matching the target customer criteria
+- **Generate sales sheets** for identified customers — one-page summaries of how the product line addresses their specific needs
+- **Review the persona list** — ensure there are representative personas for each likely member of the customer set
+- **Add missing personas** when gaps are found
+- **Update existing personas** with real-world data from identified customers
+- **Frequency:** Rotate with Task 1 and Task 3
+
+### Task 3: Design Thinking
+- **Analyze the persona list** — identify underserved needs, pain points, and opportunities for each persona
+- **Apply design thinking methodologies** — empathize, define, ideate, prototype concepts, test assumptions
+- **Develop feature concepts** that address identified needs
+- **Add features to the backlog** with: persona source, problem statement, proposed solution, acceptance criteria hypothesis
+- **Frequency:** Rotate with Task 1 and Task 2
+
+### Mandatory: Backlog Reprioritization
+**Whenever anything is added to the backlog** (from Tasks 1-3, or from Engineering flagging technical debt, or from CSO strategic shifts):
+1. Review the full backlog
+2. Reassess priorities based on: competitive urgency, customer impact, technical dependencies, CSO strategic direction
+3. Produce a priority-ranked backlog for CSO review
+4. Flag any items that should be escalated to the current sprint
+
+---
+
 ## Planning Loop: PLM ↔ CSO ↔ Engineering
 
 The product planning process is a three-way collaboration:
