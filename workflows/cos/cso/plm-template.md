@@ -29,7 +29,16 @@ The product planning process is a three-way collaboration:
 - Produce sprint plan with stories, priorities, sizes, acceptance criteria
 - Update the product roadmap
 
-### Step 2: CSO Provides Strategic Review
+### Step 2: Engineering Analyzes Delta & Updates Models
+- Engineering analyzes the gap between current state and desired state
+- Engineering updates **UML and SysML models** to represent new features:
+  - **UML:** Class diagrams (data model, service interfaces), sequence diagrams (cross-product flows), component diagrams (service boundaries)
+  - **SysML:** Block definition diagrams (system structure), requirement diagrams (feature → requirement allocation), activity diagrams (user flows, business processes)
+- PLM reviews models for product correctness
+- CSO reviews models for strategic alignment
+- **Models are the contract** — no code is written against a feature until its model is reviewed and approved
+
+### Step 3: CSO Provides Strategic Review
 - Review the plan against competitive positioning, target persona, and company strategy
 - Produce CSO Review Memo
 - If modifications required, PLM revises and resubmits

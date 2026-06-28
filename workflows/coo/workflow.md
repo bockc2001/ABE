@@ -63,6 +63,7 @@ Day-to-day operations, process optimization, resource allocation, vendor managem
 | Supply chain / logistics | Logistics decides; COO approves |
 | Vendor selection | COO decides; CFO approves budget; GC reviews contracts |
 | Cross-domain priority conflicts | COO decides; escalates to CoS if needed |
+| Branch protection rules | Engineering proposes; COO approves |
 
 ## Escalation
 

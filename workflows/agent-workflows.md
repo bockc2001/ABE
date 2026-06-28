@@ -86,14 +86,17 @@ Before sprint planning, Engineering conducts a Sprint Zero:
 ### Phase 4: Sprint Planning
 **Who triggers:** Engineering, after Sprint Zero
 
+**Prerequisite:** Engineering has analyzed deltas and produced UML/SysML models representing the new features. PLM and CSO have reviewed those models.
+
 1. **Estimate** — For each story, estimate effort (tokens, compute, wall-clock time) and identify the engineering specialty needed
 2. **Identify Dependencies** — Map cross-product dependencies, external service dependencies, and data model prerequisites
 3. **Risk Assessment** — Flag technical risks and propose mitigations
-4. **Pod Assignment** — Assign stories to pods based on specialty and capacity
-5. **Resource Request** — Submit resource requirements to COO → CRO for allocation
-6. **Execution Plan** — Produce sprint execution plan with story assignments, sub-agent spawn schedule, integration points, and demo readiness criteria
+4. **Decompose features → tasks** — Each task is explicit, small, atomic, testable, and self-describing. Sized for one pod.
+5. **Pod Assignment** — Assign tasks to pods based on specialty and capacity
+6. **Resource Request** — Submit resource requirements to COO → CRO for allocation
+7. **Execution Plan** — Produce sprint execution plan with task assignments, feature branch structure, and demo readiness criteria
 
-**Output:** Sprint execution plan
+**Output:** Sprint execution plan + task decomposition + branch structure
 
 **Review:** COO reviews for resource feasibility. CoS confirms resource allocation.
 
@@ -104,9 +107,30 @@ Before sprint planning, Engineering conducts a Sprint Zero:
 ### Phase 5: Sprint Execution
 **Who triggers:** Engineering, continuously
 
-- Engineering spawns sub-agents to execute stories
-- Engineering tracks story completion against the sprint execution plan daily
+**Branch & Integration Model:**
+```
+main (protected)
+  └── develop (protected)
+        └── feature/<feature-id>-<short-name>     ← Engineering creates
+              ├── task/<feature-id>/<task-id>-<short-name>   ← Pod creates
+              ├── task/<feature-id>/<task-id>-<short-name>
+              └── task/<feature-id>/<task-id>-<short-name>
+```
+
+**Rules:**
+1. Engineering creates one feature branch per feature from `develop`
+2. Each pod creates a task sub-branch from the feature branch
+3. Pods work only in their task branch — no modifications outside task scope
+4. Pods PR **only to the parent feature branch** — never directly to `develop` or `main`
+5. Pods may only PR when **all tests run clean** (unit tests, typecheck, lint)
+6. Engineering reviews each pod PR before merging into the feature branch
+7. When all tasks for a feature are complete, Engineering runs full test suite and PRs the feature branch to `develop`
+
+**Execution:**
+- Engineering spawns pods to execute tasks in their task branches
+- Engineering tracks task completion against the sprint execution plan daily
 - Engineering monitors sub-agent resource consumption in real-time against allocation
+- Engineering reviews and merges pod PRs into feature branches
 - **Daily standups** (async) via status updates
 - **PLM actively monitors** cross-functional blockers — flags to relevant domain leads, escalates to CoS if unresolvable
 - **COO monitors** operational blockers (infrastructure, vendor, deployment)
@@ -180,8 +204,10 @@ Before sprint planning, Engineering conducts a Sprint Zero:
 
 Every story must meet these criteria before it is considered complete:
 
+- [ ] UML/SysML models updated to represent the feature (class diagrams, requirement allocations, activity diagrams)
+- [ ] Feature branch created from `develop` with all task sub-branches merged
 - [ ] Code implemented and reviewed
-- [ ] Tests written and passing
+- [ ] Tests written and passing (unit, typecheck, lint — all clean)
 - [ ] Security scan clean (no critical/high vulnerabilities)
 - [ ] Documentation updated (code comments, README, API docs as applicable)
 - [ ] UX reviewed by CXO (if user-facing changes)
@@ -189,6 +215,7 @@ Every story must meet these criteria before it is considered complete:
 - [ ] Deployed to staging and verified by Production
 - [ ] Acceptance criteria met and verified by PLM
 - [ ] No unresolved critical or high-severity bugs
+- [ ] Full test suite passes on feature branch before PR to `develop`
 
 ---
 
@@ -240,9 +267,24 @@ Every story must meet these criteria before it is considered complete:
 
 ---
 
+## Main Does Not Build
+
+**Main (OWL) is Chris's personal assistant and the orchestrator. It routes requests, answers questions, and tracks progress. It does NOT write product code, create branches, run builds, or deploy.**
+
+When Chris requests a product change:
+1. **Main describes the delta** — what exists, what should exist, and why
+2. **Main routes to Engineering** through the hierarchy (Main → CoS → COO → Engineering)
+3. **Main tracks** that the request was routed and monitors for completion
+4. **Main does NOT implement** the change itself
+
+If Main accidentally starts writing product code, stop. Route it to Engineering.
+
+---
+
 ## Key Rules
 
 - **Main (OWL) only spawns CoS.** CoS spawns and manages all domain agents.
+- **Main does not build.** Main routes, tracks, and explains. Engineering builds.
 - **Executive Assistants are outside the agent reporting structure.** Each EA reports directly to their human counterpart, not to CoS.
 - **CoS does not touch documents owned by others.** Each agent owns their own artifacts.
 - **CoS orchestrates, not executes.** CoS coordinates, routes, tracks, and escalates. Domain agents do the work.
