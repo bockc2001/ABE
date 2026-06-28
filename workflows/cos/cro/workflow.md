@@ -4,11 +4,21 @@
 
 ## Core Function
 
-Resource utilization, software licensing, human touch time tracking, materials management, tool usage and allocation. Aggregates all role resource reports, provides total available resource figures to CoS for limit enforcement, and periodically updates resource allocations for all agents based on available resources.
+Resource utilization (digital + physical), software licensing, human touch time tracking, materials management, tool usage and allocation. Aggregates all role resource reports, provides total available resource figures to CoS for limit enforcement, and dynamically updates resource allocations for all agents based on availability and planned usage. Tracks physical inventory: materials (PLA, resin, fasteners, PCBs, components) and tools (3D printers, test equipment, hand tools).
 
 ## Workflows
 
-### 1. Resource Collection & Aggregation (Weekly)
+### 0. Physical Resource Inventory
+- Track physical materials (PLA filament, resin, fasteners, PCBs, electronic components, etc.)
+- Track tools and equipment (3D printers, soldering stations, oscilloscopes, test fixtures, etc.)
+- Maintain current inventory levels, reorder thresholds, and location tracking
+- Track tool utilization (uptime, maintenance schedule, availability for use)
+- File inventory snapshot at `turingdynamics/resources/physical-inventory.json`
+- Alert CoS when materials fall below reorder threshold or tools need maintenance
+
+**Inventory output:** `turingdynamics/resources/physical-inventory.json`
+
+### 1. Resource Collection & Aggregation (Daily)
 - Collect historical actuals (last 7 days by day) from all roles
 - Collect near-term requests (next 7 days by day) from all roles
 - Collect monthly aggregates (current + next month) from all roles
@@ -63,12 +73,13 @@ Resource utilization, software licensing, human touch time tracking, materials m
 ## Resource Reporting Protocol
 
 ### Collection (Rick's responsibility)
-- Every Sunday at 20:00 UTC, review all agent resource reports filed in `turingdynamics/resources/`
+- **Daily at 20:00 UTC**, review all agent resource reports filed in `turingdynamics/resources/`
 - **If an agent's report is missing:** notify the agent, escalate to CoS after 1 hour
-- Aggregate totals across all agents and resource types
+- Aggregate totals across all agents and resource types (digital + physical)
 - Calculate: total consumed, total requested, total available, headroom
-- File the aggregate at `turingdynamics/resources/aggregate-YYYY-W<nn>.json`
-- Deliver summary to CoS (Craig) for limit enforcement
+- File the aggregate at `turingdynamics/resources/aggregate-YYYY-MM-DD.json`
+- **Dynamically update each agent's cron job token limits** based on utilization and planned work
+- Deliver summary to CoS (Craig) for awareness
 
 ### Enforcement thresholds
 | Threshold | Action |
@@ -83,4 +94,11 @@ Before any agent starts a new task, it must verify it has not exceeded its HARD 
 2. CoS approves or denies within 4 hours
 3. If denied, agent idles until next budget period
 
-**Rick's cron:** Resource review runs every Sunday at 20:00 UTC.
+**Rick's cron:** Resource review runs daily at 20:00 UTC. Physical inventory check runs daily at 20:00 UTC.
+
+### Physical Resource Tracking
+- **Materials:** PLA filament (by color/weight/resin type), fasteners, PCBs, electronic components, raw stock
+- **Tools:** 3D printers (by machine, uptime, maintenance schedule), soldering stations, oscilloscopes, multimeters, test fixtures, hand tools
+- **Utilization:** Track which agent/project consumed what material and tool time
+- **Reorder:** Flag materials below threshold, tools due for maintenance
+- **Output:** `turingdynamics/resources/physical-inventory.json`
