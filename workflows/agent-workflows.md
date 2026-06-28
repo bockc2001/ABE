@@ -200,14 +200,35 @@ main (protected)
 
 ---
 
+## Engineering Principles
+
+All engineering work (Engineering, pods, sub-agents) MUST follow the **Engineering Principles** defined at `abe/workflows/coo/engineering/principles.md`. Summary:
+
+| # | Principle | Check at PR |
+|---|---|---|
+| 1 | Think Before Coding | Model exists before code? |
+| 2 | Simplicity First | Is there a simpler approach? |
+| 3 | Surgical Changes | PR focused? No drive-by refactors? |
+| 4 | Goal-Driven Execution | Task traces to a feature/goal? |
+| 5 | Update Models Before Code | UML/SysML approved? |
+| 6 | Technical Debt Accounted For | Discovered debt logged as backlog item? |
+| 7 | Tests Represent the User | Tests cover real user workflows? |
+| 8 | Trivial Tests Provide No Value | Any tests that can't catch real bugs? |
+| 9 | Challenge → Clarify → Commit | Any unclarified assumptions in the code? |
+
+Engineering enforces these during PR review. CoS reports compliance status to CEO.
+
 ## Standard Definition of Done
 
 Every story must meet these criteria before it is considered complete:
 
+- [ ] All applicable **Engineering Principles** satisfied
 - [ ] UML/SysML models updated to represent the feature (class diagrams, requirement allocations, activity diagrams)
 - [ ] Feature branch created from `develop` with all task sub-branches merged
 - [ ] Code implemented and reviewed
 - [ ] Tests written and passing (unit, typecheck, lint — all clean)
+- [ ] Tests represent real user workflows (no trivial tests)
+- [ ] Technical debt discovered during execution logged as backlog items
 - [ ] Security scan clean (no critical/high vulnerabilities)
 - [ ] Documentation updated (code comments, README, API docs as applicable)
 - [ ] UX reviewed by CXO (if user-facing changes)

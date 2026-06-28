@@ -41,6 +41,24 @@ Engineering maintains discipline-specific best practices that are periodically r
 3. Notifies COO and CoS of the new specialty
 4. Best practices are living documents — updated as the discipline matures
 
+## Engineering Principles
+
+**Non-negotiable rules that govern all engineering work.** Full document at [`principles.md`](./principles.md).
+
+| # | Principle | Core Idea |
+|---|---|---|
+| 1 | **Think Before Coding** | Model first, code second. No code without understanding. |
+| 2 | **Simplicity First** | Build only what's needed. Simplest approach wins. |
+| 3 | **Surgical Changes** | Small, focused, no scope creep. One task = one change. |
+| 4 | **Goal-Driven Execution** | Every task traces to a user/business goal. |
+| 5 | **Update Models Before Code** | UML/SysML are the contract. Update before coding. |
+| 6 | **Technical Debt Must Be Accounted For** | Log it on the backlog. Don't hide it. |
+| 7 | **Tests Represent the User** | Test real workflows, not implementation details. |
+| 8 | **Trivial Tests Provide No Value** | If a test can't catch a real bug, delete it. |
+| 9 | **Challenge → Clarify → Commit** | Never guess. Ask, then commit fully. |
+
+These principles apply to Engineering itself, all pods, and all sub-agents. They are enforced during PR review and sprint review.
+
 ## Repo Access
 
 Engineering obtains delegated tokens from each product line's PLM to commit to that product's repo.
