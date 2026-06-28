@@ -62,14 +62,15 @@ A **project** is a discrete body of work to build, extend, or improve a product.
 
 **PLM iterates:** If any reviewer raises concerns, PLM revises the charter and resubmits to that reviewer. This continues until all four reviewers sign off.
 
-**CEO Final Approval:** Once all reviewers approve, the charter goes to CEO for final sign-off. CEO approval is required for:
-- All projects involving cash
-- All projects (final go/no-go authority)
+**CEO Final Approval:** Once all reviewers approve, the charter goes to CEO for final sign-off.
 
-**On CEO approval, CoS notifies COO to spawn:**
-- **Engineering** (always) — plans and executes the project
-- **Logistics** (if needed) — supply chain, procurement, vendor management
-- **Production** (if needed) — deployment, release coordination
+**The charter IS the delegation authority.** On CEO signature:
+1. **CoS immediately notifies COO** — the charter authorizes COO to act
+2. **COO spawns Engineering** (and Logistics/Production if needed) — COO defines scope of work per the charter
+3. **COO delegates sprint planning to Engineering** — Engineering owns task decomposition
+4. **COO monitors execution** — tracks progress, reviews task decomposition, monitors resources
+
+The charter's resource section (Section 4) is the COO's  delegation envelope — what spends are authorized, what entities are engaged, and the effort estimate COO uses to size the work.
 
 ---
 
