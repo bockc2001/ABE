@@ -60,10 +60,27 @@ Resource utilization, software licensing, human touch time tracking, materials m
 - Budget overrun risk → CRO → CFO → CoS → CEO
 - Tooling/licensing dispute → CRO → CFO
 
-## Resource Reporting
+## Resource Reporting Protocol
 
-Per the standard resource reporting framework:
-- **Historical actuals:** last 7 days by day (tokens, compute, requests)
-- **Near-term requests:** next 7 days by day
-- **Monthly aggregates:** current + next calendar month
-- Reports to CoS; subject to hard limits
+### Collection (Rick's responsibility)
+- Every Sunday at 20:00 UTC, review all agent resource reports filed in `turingdynamics/resources/`
+- **If an agent's report is missing:** notify the agent, escalate to CoS after 1 hour
+- Aggregate totals across all agents and resource types
+- Calculate: total consumed, total requested, total available, headroom
+- File the aggregate at `turingdynamics/resources/aggregate-YYYY-W<nn>.json`
+- Deliver summary to CoS (Craig) for limit enforcement
+
+### Enforcement thresholds
+| Threshold | Action |
+|---|---|
+| **SOFT limit (90%)** | Warning to agent + CoS |
+| **HARD limit (80%)** | Agent must idle until CoS approves |
+| **Exceedance** | Escalate to CEO |
+
+### Agent compliance check
+Before any agent starts a new task, it must verify it has not exceeded its HARD limit. If exceeded:
+1. Agent pages CoS (Craig) with justification for additional budget
+2. CoS approves or denies within 4 hours
+3. If denied, agent idles until next budget period
+
+**Rick's cron:** Resource review runs every Sunday at 20:00 UTC.

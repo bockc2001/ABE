@@ -71,15 +71,80 @@ Material incident → Any agent → CoS + CEO (immediate, simultaneous notificat
 
 ## Resource Reporting
 
-Every agent reports three data sets to the CRO:
+### Mechanism
+
+Every agent files a **weekly resource report** to the CRO every Sunday at 20:00 UTC. The report is a JSON file committed to the instance repo:
+
+```
+turingdynamics/resources/YYYY-W<week-number>.json
+```
+
+### Report Schema
+
+```json
+{
+  "agent": "miles",
+  "role": "PLM",
+  "period": {
+    "start": "2026-06-22",
+    "end": "2026-06-28"
+  },
+  "actuals": {
+    "tokens": { "total": 150000, "daily": { "2026-06-22": 20000, "2026-06-23": 25000 } },
+    "compute": { "total_ms": 120000, "daily": {} },
+    "requests": { "total": 45, "daily": {} }
+  },
+  "requests": {
+    "tokens": { "total": 200000, "daily": { "2026-06-29": 30000, "2026-06-30": 30000 } },
+    "compute": { "total_ms": 150000, "daily": {} },
+    "requests": { "total": 60, "daily": {} }
+  },
+  "monthly": {
+    "current": { "tokens": 350000, "compute_ms": 270000, "requests": 105 },
+    "next": { "tokens": 400000, "compute_ms": 300000, "requests": 120 }
+  },
+  "tasks_completed": 3,
+  "tasks_planned": 4
+}
+```
+
+### Three Data Sets (per agent)
 
 | Report | Period | Content |
 |---|---|---|
-| **Historical Actuals** | Last 7 days (by day) | Actual tokens, compute, requests consumed |
-| **Near-term Requests** | Next 7 days (by day) | Projected tokens, compute, requests needed |
-| **Monthly Aggregates** | Current month + next month | Aggregate resource requests per calendar month |
+| **Historical Actuals** | Last 7 days (by day) | Actual tokens consumed, compute time, API requests |
+| **Near-term Requests** | Next 7 days by day | Projected tokens, compute, requests needed |
+| **Monthly Aggregates** | Current month + next month | Aggregate resource needs |
 
-**Limit enforcement:** CRO aggregates → CoS sets HARD limits at ≤80% of total available. No exceedance without CoS approval.
+### Roll-Up Chain
+
+1. **Each agent** → files weekly JSON report to `turingdynamics/resources/`
+2. **CRO (Rick)** → aggregates all reports, calculates totals, identifies bottlenecks
+3. **CoS (Craig)** → reviews CRO aggregate, sets HARD per-agent limits at ≤80% of total available
+4. **CEO** → notified only if limits need to change or resources are exceeded
+
+### Limit Enforcement
+
+- **HARD limit** = 80% of remaining budget for the period
+- **SOFT limit** = 90% of remaining budget — triggers warning to agent + CoS
+- **Exceedance** = agent MUST stop non-essential work and request additional budget from CoS
+- **No exceedance without CoS approval.** Period.
+
+### Initial Budget (per week)
+
+| Resource | Total | Per-Agent Max (80%) |
+|---|---|---|
+| Tokens | 2,000,000 | 400,000 (2 agents active = 800K allocated) |
+| Compute | 2 hours wall-clock | 30 min per agent |
+| API requests | 1,000 | 200 per agent |
+
+> Budget is set by CEO, adjusted weekly based on CRO reports.
+
+### Non-Compliance
+
+- Agent exceeds SOFT limit → warning issued, must justify within 4 hours
+- Agent exceeds HARD limit → agent must idle until CoS approves additional budget
+- 3+ violations in a month → CEO review required
 
 ## Communication Norms
 
