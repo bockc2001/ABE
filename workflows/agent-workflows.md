@@ -92,6 +92,8 @@ Before sprint planning, Engineering conducts a Sprint Zero:
 ### Phase 4: Sprint Planning
 **Who triggers:** Engineering, after Sprint Zero
 
+> **Sprints do not need their own charter.** Sprint approval is implied by the project charter. The COO delegates sprint scope to Engineering within the charter's resource envelope. Only if EVM metrics on project execution require intervention (SPI/CPI thresholds breached) does the COO escalate to CoS for charter-level review.
+
 **Prerequisite:** Engineering has analyzed deltas and produced UML/SysML models representing the new features. PLM and CSO have reviewed those models.
 
 1. **Estimate** — For each story, estimate effort (tokens, compute, wall-clock time) and identify the engineering specialty needed
