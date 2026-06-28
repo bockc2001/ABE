@@ -91,7 +91,7 @@ When not reviewing a charter or engaged in a strategic decision, the CSO must be
 - **Output:** Strategic feedback memos to PLMs, updates to strategic priorities
 
 ### Task 2: Strategic Artifact Production
-- Produce strategic artifacts organized by function. All outputs go to `lifeblood-repo/docs/strategy/`.
+- Produce **corporate-level** strategic artifacts organized by function. These apply to the entire organization (TuringDynamics), not individual product lines. All outputs go to `turingdynamics/docs/strategy/`.
 
 **Foundation & Direction:**
 - Vision & Mission Statements — long-term "why" (future destination) and "how" (core purpose)
