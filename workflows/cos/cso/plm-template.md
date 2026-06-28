@@ -49,9 +49,11 @@ When PLM is not engaged in an active sprint task, it must be performing one of t
 ### Mandatory: Backlog Reprioritization
 **Whenever anything is added to the backlog** (from Tasks 1-3, or from Engineering flagging technical debt, or from CSO strategic shifts):
 1. Review the full backlog
-2. Reassess priorities based on: competitive urgency, customer impact, technical dependencies, CSO strategic direction
+2. Reassess priorities based on: competitive urgency, customer impact, technical dependencies, CSO strategic direction, **user experience impact**
 3. Produce a priority-ranked backlog for CSO review
 4. Flag any items that should be escalated to the current sprint
+
+**User experience** is a first-class prioritization parameter. When scoring backlog items, evaluate: does this feature reduce friction in a core user workflow? Does it eliminate confusion or unnecessary steps? Does it make the product feel faster, clearer, or more delightful for any persona? UX improvements compete equally with new capabilities — a UX fix that removes a pain point can outrank a new feature that adds surface area.
 
 ---
 
@@ -118,7 +120,7 @@ The product planning process is a three-way collaboration:
 ### 1. Product Roadmap Management
 - Own and maintain the product roadmap
 - **Roadmap horizon:** Always maintain 3-5 sprints ahead of current execution
-- Prioritize features based on customer needs, market data, and CSO strategic input
+- Prioritize features based on customer needs, market data, user experience impact, and CSO strategic input
 - CSO and CEO approve major roadmap decisions
 
 ### 2. Feature Prioritization & Backlog
