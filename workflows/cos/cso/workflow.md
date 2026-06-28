@@ -90,13 +90,29 @@ When not reviewing a charter or engaged in a strategic decision, the CSO must be
 - Identify strategic gaps the PLM may have missed — market shifts, emerging competitor moves, regulatory changes
 - **Output:** Strategic feedback memos to PLMs, updates to strategic priorities
 
-### Task 2: Strategic Memo Production
-- Produce strategic analysis memos on topics relevant to the product line:
-  - Market positioning assessments
-  - Competitive response strategies (when a competitor makes a move)
-  - Technology trend analysis (what's emerging that could affect the product)
-  - Regulatory/legal horizon scanning (what's coming that could affect the market)
-- **Output:** `lifeblood-repo/docs/strategy/` — strategic memos indexed by date and topic
+### Task 2: Strategic Artifact Production
+- Produce strategic artifacts organized by function. All outputs go to `lifeblood-repo/docs/strategy/`.
+
+**Foundation & Direction:**
+- Vision & Mission Statements — long-term "why" (future destination) and "how" (core purpose)
+- Core Values — guiding principles for company culture and decision-making
+
+**Analysis & Assessment:**
+- SWOT Analysis — internal Strengths/Weaknesses, external Opportunities/Threats
+- PESTLE Analysis — Political, Economic, Social, Technological, Legal, Environmental factors
+- Competitive Landscape/Matrix — competitor market shares, products, positioning
+
+**Planning & Execution:**
+- Strategic Plan — master document: long-term objectives, target markets, resource allocation
+- Strategy Map — visual diagram connecting intangible assets to tangible outcomes (Balanced Scorecard linkage)
+- Business Model Canvas — how the organization creates, delivers, and captures value
+- Roadmaps — chronological visualizations translating strategy into phased initiatives, timelines, milestones
+
+**Measurement & Control:**
+- OKRs & KPIs — quantifiable metrics for performance and goal tracking
+- Business Cases — project justifications: costs, strategic alignment, expected ROI
+
+- **Output:** `lifeblood-repo/docs/strategy/` — all artifacts indexed by date, topic, and type
 
 ### Task 3: Charter Pipeline Management
 - Check for pending charters from PLMs awaiting CSO review
