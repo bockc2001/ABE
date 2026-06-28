@@ -29,39 +29,44 @@ A **project** is a discrete body of work to build, extend, or improve a product.
 
 ---
 
-### Phase 1: Project Planning Session
-**Who triggers:** CSO or PLM
+### Phase 1: Project Charter Proposal
+**Who proposes:** PLM (for capability gaps, competitive findings, design thinking outputs) or CSO (for new products)
 
-**CSO initiates** when a new product is identified and CEO approves creation.
+**PLM initiates** when:
+- Competitive analysis reveals a gap that requires a project to close
+- Customer intelligence identifies a need that crosses multiple features
+- Design thinking produces a feature concept significant enough for its own project
+- The backlog contains items that cluster into a coherent project
 
-**PLM initiates** when market research indicates a significant gap between existing capabilities and desired capabilities, not covered under an existing project.
+**CSO initiates** when a new product line or major strategic initiative is identified (with CEO pre-approval).
 
-**Pre-session preparation:**
-- **CSO** prepares: strategic context, competitive landscape, target market definition
-- **PLM** prepares: product gap analysis, user persona data, proposed feature set
-- **COO** prepares: operational capacity assessment, known constraints
+**PLM drafts the charter** using the template at `abe/docs/charters/project-charter-template.md`:
+1. Define project purpose, scope, objectives, success criteria
+2. Identify risks and dependencies
+3. Propose timeline and milestones
+4. Document the source (competitive gap, customer need, design thinking output, etc.)
 
-**During the session (CSO + PLM + COO):**
-1. Review strategic alignment and product gap
-2. Define project scope (in-scope / out-of-scope)
-3. Draft project charter using template at `abe/docs/charters/project-charter-template.md`
-4. Identify preliminary resource needs and risks
-5. Determine if cash is required (triggers CEO approval)
-
-**Output:** Draft project charter
+**Output:** Draft project charter (PLM authored)
 
 ---
 
-### Phase 2: Charter Review & Approval
-**Who triggers:** CoS circulates the draft charter for approval
+### Phase 2: Charter Review & Iteration
+**Who triggers:** PLM submits draft charter to reviewers
 
-**Review sequence:**
-1. **CFO** reviews: resource estimates, budget impact, cash requirements
-2. **GC** reviews: licensing implications, IP considerations, contract needs
-3. **CSO + COO** co-approve: strategic alignment and operational feasibility
-4. **CEO** approves: required if cash is required; optional but recommended for strategic projects
+**Review sequence (PLM iterates between reviews until all pass):**
 
-**On approval, CoS notifies COO to spawn:**
+1. **COO** — Estimates engineering effort and duration. Assesses operational feasibility. Signs off on effort estimate.
+2. **CFO** — Confirms sufficient resources exist (token budget, compute, tooling, cash). Estimates total cost. Signs off on resource confirmation.
+3. **GC** — Identifies any legal, licensing, IP, regulatory, or compliance issues. Signs off on legal review.
+4. **CSO** — Confirms strategic alignment. Assesses competitive impact and strategic risks. Signs off on strategic review.
+
+**PLM iterates:** If any reviewer raises concerns, PLM revises the charter and resubmits to that reviewer. This continues until all four reviewers sign off.
+
+**CEO Final Approval:** Once all reviewers approve, the charter goes to CEO for final sign-off. CEO approval is required for:
+- All projects involving cash
+- All projects (final go/no-go authority)
+
+**On CEO approval, CoS notifies COO to spawn:**
 - **Engineering** (always) — plans and executes the project
 - **Logistics** (if needed) — supply chain, procurement, vendor management
 - **Production** (if needed) — deployment, release coordination
