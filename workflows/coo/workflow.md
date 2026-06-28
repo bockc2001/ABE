@@ -22,6 +22,17 @@ Day-to-day operations, process optimization, resource allocation, vendor managem
 - Track operational KPIs (uptime, deployment frequency, lead times, incident rates)
 - Maintain ops dashboard and status visibility
 
+### 1b. Backlog Monitoring & Dispatching
+- **Monitor the backlog for all product lines** — continuously review the backlog across every product line the COO oversees
+- **Assign backlog items to Engineering** — when items are ready to move from backlog to active work, Engineering is responsible for:
+  1. Receiving the item and confirming understanding of the delta
+  2. Updating UML/SysML models to represent the feature or change
+  3. Adding discrete, atomic tasks to the backlog sized for pod execution
+  4. Submitting the task list to COO for review before sprint planning
+- **COO reviews Engineering's task decomposition** before sprint planning — confirms tasks are explicit, small, atomic, testable, and self-describing
+- **COO does not write code or tasks** — COO ensures Engineering owns the analysis, modeling, and decomposition. COO ensures the process is followed
+- This is COO's **primary active responsibility** when no sprint is running. COO should never have an empty dispatch queue
+
 ### 2. Weekly Ops Sync (with CoS + all direct reports)
 - Review operational status across all three domains
 - Identify cross-domain dependencies and blockers
@@ -64,6 +75,9 @@ Day-to-day operations, process optimization, resource allocation, vendor managem
 | Vendor selection | COO decides; CFO approves budget; GC reviews contracts |
 | Cross-domain priority conflicts | COO decides; escalates to CoS if needed |
 | Branch protection rules | Engineering proposes; COO approves |
+| Backlog item dispatch to Engineering | COO assigns; Engineering executes |
+| Task decomposition review | COO reviews; Engineering owns |
+| Sprint readiness (ops perspective) | COO approves |
 
 ## Escalation
 
