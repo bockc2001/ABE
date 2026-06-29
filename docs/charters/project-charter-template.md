@@ -34,6 +34,18 @@ Each project needs its own charter with CEO approval. The PLM/COO/CSO determine 
 
 **New project charter needed when:** distinct business objective, separate funding source, unique resource envelope, or investment decision that should be evaluated independently of existing projects.
 
+### Priority Assignment Rules
+
+**At the epic level, there can be NO duplicate priority assignments.**
+
+- Each epic must have a unique priority ranking relative to other epics within the same project
+- If everything is P0, then nothing is P0 — priority is meaningless
+- The PLM is responsible for force-ranking epics into a strict ordering
+- When new epics are added, existing epics must be re-ranked — no ties allowed
+- The COO reviews priority assignments during sprint planning to ensure no duplicates
+- Acceptable priority levels: P0 (critical), P1 (important), P2 (desired), P3 (future)
+- Recommended: no more than 3-5 P0 epics active at any time
+
 ### EVM Escalation
 
 If project EVM metrics breach thresholds (SPI/CPI < 0.9), the COO escalates to CoS for charter-level review.
