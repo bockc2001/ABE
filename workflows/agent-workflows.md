@@ -92,15 +92,19 @@ Before sprint planning, Engineering conducts a Sprint Zero:
 ### Phase 4: Sprint Planning
 **Who triggers:** Engineering, after Sprint Zero
 
-> **Sprints do not need their own charter.** Sprint approval is implied by the project charter. The COO delegates sprint scope to Engineering within the charter's resource envelope. Only if EVM metrics on project execution require intervention (SPI/CPI thresholds breached) does the COO escalate to CoS for charter-level review.
->
 > **Charter scope hierarchy:**
-> - **Project charter** — authorizes a discrete product or major product line. One product = one active charter. Examples: "LifeBlood Through MVP."
-> - **Sprint** — execution phase within a project. Implied by project charter. No separate charter.
-> - **Epic/Feature** — body of work within the project roadmap. Backlog items, not charters.
-> - **Work Package** — feature area or story cluster within a sprint. Engineering manages via task decomposition, not charter.
 >
-> **New charters only when:** new product line, different business model/market, cash beyond charter authorization, or EVM intervention required.
+> | Level | Description | Timescale | Needs Charter |
+> |---|---|---|---|
+> | **Project** | Highest-level unit. Business objective, constrained by scope/schedule/budget/resources. Team-scale effort. | 3-5 years | **Always** — CEO approval required |
+> | **Program Increment** | Collection of sprints for planned feature/epic development | ~3 months | **Sometimes** — only if scope/cash exceeds project charter |
+> | **Epic** | Major capability within a project. Too large for one sprint. | Multiple sprints | **Never** — backlog/roadmap |
+> | **Sprint** | Fixed-length execution period with committed scope | 1-2 weeks | **Never** — implied by project charter |
+> | **Feature/Story/Task** | Work items for sprint execution | 1-3 days | **Never** — backlog items |
+>
+> **One product = one active project charter.** New project charters only for new product lines or fundamentally different business objectives.
+>
+> **EVM escalation:** if SPI/CPI < 0.9, COO escalates to CoS for charter-level review.
 
 **Prerequisite:** Engineering has analyzed deltas and produced UML/SysML models representing the new features. PLM and CSO have reviewed those models.
 

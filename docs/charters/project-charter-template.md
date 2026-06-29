@@ -4,20 +4,30 @@
 
 ## Charter Scope Rules
 
-**A project charter authorizes a PROJECT — not a sprint, not an epic, not a feature.**
+**A project charter authorizes a PROJECT — the highest-level unit of work.**
 
-- **Project:** A discrete product or major product line that requires CEO approval, multi-sprint execution, and has its own success criteria and budget. Examples: "LifeBlood Through MVP," "LifeBlood Mobile Companion App."
-- **Sprint:** A time-boxed execution phase within a project. Sprint approval is implied by the project charter. No separate charter needed.
-- **Epic/Feature:** A body of work within a project roadmap. Tracked via backlog and roadmap, not via charter.
-- **Work Package:** A feature area, story group, or task cluster within a sprint. Managed by Engineering via task decomposition, not via charter.
+### Work Hierarchy
 
-**One product = one active project charter.** The charter authorizes the COO to delegate all work within the project scope to Engineering. Sprints execute against the charter. Epics and features are backlog items within the charter's scope.
+| Level | Description | Timescale | Our Equivalent |
+|---|---|---|---|
+| **Project** | Highest-level unit. Specific business objective, constrained by scope, schedule, budget, resources. Requires team-scale effort. | 3-5 years | LifeBlood Through MVP (LB-MVP-001) |
+| **Program Increment (PI)** | Collection of sprints over which features and epics are planned. | ~3 months | Milestone groupings (M1-M4, M5-M8, etc.) |
+| **Epic** | Major capability or workstream within a project. Too large for one sprint, broken into features/stories/tasks. | Multiple sprints | Epic 1 (HCM), Epic 5 (Visibility), Epic 6 (Scale), etc. |
+| **Sprint** | Fixed-length execution period. Team commits to a specific set of work. | 1-2 weeks | Sprint 1...14 |
+| **Feature/Story/Task** | Work items decomposed for sprint execution. | 1-3 days | GitHub issues |
 
-**New charters are needed only when:**
-- A new product line is initiated (not a feature within an existing product)
-- A materially different business model or market segment requires separate authorization
-- Cash commitments exceed what the active charter authorizes
-- EVM metrics on project execution require intervention (SPI/CPI < 0.9)
+### What Needs a Charter
+
+- **Project** → **Always.** CEO approval required. Defines scope, budget, schedule, resources.
+- **Program Increment** → **Sometimes.** If the PI introduces major scope changes, new dependencies, or requires cash beyond the project charter's authorization.
+- **Epic** → **Never.** Managed via backlog and roadmap within the project.
+- **Sprint** → **Never.** Sprint approval is implied by the project charter. COO delegates sprint scope to Engineering within the charter resource envelope.
+
+**One product = one active project charter.** The charter authorizes PIs, sprints, epics, and features within its scope. New project charters are needed only for new product lines or when business objectives fundamentally change.
+
+### EVM Escalation
+
+If project EVM metrics breach thresholds (SPI/CPI < 0.9), the COO escalates to CoS for charter-level review.
 
 **Workflow:** PLM proposes → COO estimates effort → CFO confirms resources → GC identifies legal issues → CSO confirms strategic alignment → PLM iterates → CEO final approval.
 
