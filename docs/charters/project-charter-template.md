@@ -2,6 +2,23 @@
 
 *A project is a discrete body of work to build, extend, or improve a product. This charter defines the project's scope, objectives, resources, and success criteria. The project ends when the charter objectives are met or the project is cancelled.*
 
+## Charter Scope Rules
+
+**A project charter authorizes a PROJECT — not a sprint, not an epic, not a feature.**
+
+- **Project:** A discrete product or major product line that requires CEO approval, multi-sprint execution, and has its own success criteria and budget. Examples: "LifeBlood Through MVP," "LifeBlood Mobile Companion App."
+- **Sprint:** A time-boxed execution phase within a project. Sprint approval is implied by the project charter. No separate charter needed.
+- **Epic/Feature:** A body of work within a project roadmap. Tracked via backlog and roadmap, not via charter.
+- **Work Package:** A feature area, story group, or task cluster within a sprint. Managed by Engineering via task decomposition, not via charter.
+
+**One product = one active project charter.** The charter authorizes the COO to delegate all work within the project scope to Engineering. Sprints execute against the charter. Epics and features are backlog items within the charter's scope.
+
+**New charters are needed only when:**
+- A new product line is initiated (not a feature within an existing product)
+- A materially different business model or market segment requires separate authorization
+- Cash commitments exceed what the active charter authorizes
+- EVM metrics on project execution require intervention (SPI/CPI < 0.9)
+
 **Workflow:** PLM proposes → COO estimates effort → CFO confirms resources → GC identifies legal issues → CSO confirms strategic alignment → PLM iterates → CEO final approval.
 
 **Initiated by:** PLM (capability gap, competitive finding, design thinking output) or CSO (new product)

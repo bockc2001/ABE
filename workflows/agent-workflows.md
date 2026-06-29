@@ -93,6 +93,14 @@ Before sprint planning, Engineering conducts a Sprint Zero:
 **Who triggers:** Engineering, after Sprint Zero
 
 > **Sprints do not need their own charter.** Sprint approval is implied by the project charter. The COO delegates sprint scope to Engineering within the charter's resource envelope. Only if EVM metrics on project execution require intervention (SPI/CPI thresholds breached) does the COO escalate to CoS for charter-level review.
+>
+> **Charter scope hierarchy:**
+> - **Project charter** — authorizes a discrete product or major product line. One product = one active charter. Examples: "LifeBlood Through MVP."
+> - **Sprint** — execution phase within a project. Implied by project charter. No separate charter.
+> - **Epic/Feature** — body of work within the project roadmap. Backlog items, not charters.
+> - **Work Package** — feature area or story cluster within a sprint. Engineering manages via task decomposition, not charter.
+>
+> **New charters only when:** new product line, different business model/market, cash beyond charter authorization, or EVM intervention required.
 
 **Prerequisite:** Engineering has analyzed deltas and produced UML/SysML models representing the new features. PLM and CSO have reviewed those models.
 
