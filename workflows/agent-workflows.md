@@ -102,7 +102,7 @@ Before sprint planning, Engineering conducts a Sprint Zero:
 > | **Sprint** | Fixed-length execution period with committed scope | 1-2 weeks | **Never** — implied by project charter |
 > | **Feature/Story/Task** | Work items for sprint execution | 1-3 days | **Never** — backlog items |
 >
-> **One product = one active project charter.** New project charters only for new product lines or fundamentally different business objectives.
+> **Products and projects are NOT 1:1.** One product can have multiple active project charters when there are distinct business objectives, separate funding sources, different regulatory contexts, or independent investment decisions. PLM/COO/CSO determine whether a new initiative warrants a separate charter or fits within an existing project.
 >
 > **EVM escalation:** if SPI/CPI < 0.9, COO escalates to CoS for charter-level review.
 

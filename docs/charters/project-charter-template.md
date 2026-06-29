@@ -23,7 +23,16 @@
 - **Epic** → **Never.** Managed via backlog and roadmap within the project.
 - **Sprint** → **Never.** Sprint approval is implied by the project charter. COO delegates sprint scope to Engineering within the charter resource envelope.
 
-**One product = one active project charter.** The charter authorizes PIs, sprints, epics, and features within its scope. New project charters are needed only for new product lines or when business objectives fundamentally change.
+**Products and projects are NOT 1:1.** A product is the thing being built (e.g., LifeBlood). A project is a discrete business objective with its own scope, schedule, budget, and resources. One product can have multiple simultaneous projects:
+
+- Different business objectives (e.g., "LifeBlood FedRAMP Authorization" + "LifeBlood Manufacturing Module" + "LifeBlood International FMS")
+- Different funding sources (e.g., self-funded development vs. third-party funded workstream)
+- Different regulatory contexts (e.g., CMMC workstream vs. FedRAMP workstream)
+- Different customer segments requiring distinct investment decisions
+
+Each project needs its own charter with CEO approval. The PLM/COO/CSO determine whether a new initiative warrants a separate project charter or fits within an existing project's scope. At any given time, a product may have zero, one, or multiple active project charters.
+
+**New project charter needed when:** distinct business objective, separate funding source, unique resource envelope, or investment decision that should be evaluated independently of existing projects.
 
 ### EVM Escalation
 
