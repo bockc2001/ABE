@@ -22,6 +22,12 @@ Central coordination hub. Primary CEO interface for all domain agents. **CoS is 
 | CXO | `workflows/cos/cxo/workflow.md` |
 | CRO | `workflows/cos/cro/workflow.md` |
 
+## Skills
+
+- **cross-functional-coordination** — Convene agents, track decisions, escalate blockers
+- **agent-onboarding** — Onboard new agents (role setup, workflow, resources, org updates)
+- **plm-instantiate** — Onboard new product line PLMs (delegated to CSO)
+
 ## Workflows
 
 ### 1. Daily Standup (with CEO)

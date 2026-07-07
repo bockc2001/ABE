@@ -1,5 +1,16 @@
 # All Agents — Workflow Index
 
+## Shared Skills
+
+These skills are available to all agents (loaded from `skills/`):
+
+| Skill | Used by | Purpose |
+|-------|---------|---------|
+| **engineering-pod-execution** | Engineering (Ethan) | Execute sprints via ephemeral pods |
+| **cross-functional-coordination** | CoS (Craig) | Convene agents, track decisions, escalate blockers |
+| **agent-onboarding** | CoS (Craig) | Onboard new agents into the ABE instance |
+| **plm-instantiate** | CSO (Sam) | Create a new PLM for a product line |
+
 ## Reporting Tree
 
 ```

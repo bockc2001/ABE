@@ -69,6 +69,11 @@ Engineering obtains delegated tokens from each product line's PLM to commit to t
 
 **Main (OWL) is a personal assistant and orchestrator. It does not write product code, create branches, or execute builds.** When a product gap or change request is identified, Main routes it to Engineering through the agent hierarchy (Main → CoS → COO → Engineering). Engineering is the only agent that writes product code.
 
+## Skills
+
+- **engineering-pod-execution** — Execute sprints via ephemeral pods (spawn, review, integrate, branch/PR workflow)
+- **plm-instantiate** — Onboard new product line PLMs (delegated to CSO, referenced for awareness)
+
 ## Workflows
 
 ### 1. Receive & Analyze Delta
